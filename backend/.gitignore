@@ -1,0 +1,24 @@
+# Add frontend Next.js specific ignore rules here
+
+# Dependency directories
+node_modules/
+
+# Environment variables file (if you use dotenv)
+.env
+
+# Editor/IDE files
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+
+# Ignore package-lock.json if using npm
+package-lock.json
+
+# Ignore yarn lock file if using yarn
+yarn.lock
