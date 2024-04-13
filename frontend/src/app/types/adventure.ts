@@ -1,5 +1,5 @@
 export interface Adventure {
-  id: number;
+  _id: string;
   name: string;
   location: string;
 }

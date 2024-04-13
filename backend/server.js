@@ -26,10 +26,23 @@ const Adventure = mongoose.model("adventures", adventureSchema);
 app.get("/api/adventures", async (req, res) => {
   try {
     const adventures = await Adventure.find();
-    console.log("adventures", adventures);
     res.json(adventures);
   } catch (error) {
     console.error("Error fetching adventures:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.get("/api/adventures/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const adventure = await Adventure.findById(id);
+    if (!adventure) {
+      return res.status(404).json({ error: "Adventure not found" });
+    }
+    res.json(adventure);
+  } catch (error) {
+    console.error("Error fetching adventure:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
