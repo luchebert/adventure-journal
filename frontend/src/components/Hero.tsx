@@ -1,0 +1,23 @@
+import React from "react";
+
+const Hero = () => {
+  return (
+    <section
+      className="relative"
+      style={{
+        backgroundImage: `url('/home_splash.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "400px",
+      }}
+    >
+      <div className="absolute inset-0 flex justify-center items-center">
+        <h1 className="text-5xl font-bold text-white text-shadow-lg">
+          My Adventure Journal
+        </h1>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

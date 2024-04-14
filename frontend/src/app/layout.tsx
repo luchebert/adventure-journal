@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import QueryProvider from "@/providers/QueryProvider";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,7 +29,13 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <div className="min-h-screen bg-gray-100 grid grid-rows-[auto,1fr,auto]">
+            <Header />
+            {children}
+          </div>
+        </QueryProvider>
+        <Footer />
       </body>
     </html>
   );

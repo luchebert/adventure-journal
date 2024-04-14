@@ -7,10 +7,6 @@ import { useFetchAdventures } from "@/api/apiAdventures";
 const AdventuresPage = () => {
   const { data: adventures, isLoading, isError } = useFetchAdventures();
 
-  if (isError || adventures === undefined) {
-    return <div>Error fetching adventures</div>;
-  }
-
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">Adventures</h1>
@@ -19,7 +15,7 @@ const AdventuresPage = () => {
           <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-gray-900"></div>
         </div>
       ) : (
-        <AdventuresList adventures={adventures} />
+        <AdventuresList adventures={adventures!} />
       )}
     </div>
   );

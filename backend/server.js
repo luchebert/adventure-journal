@@ -79,7 +79,7 @@ app.delete("/api/adventures/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await Adventure.findByIdAndDelete(id);
-    res.status(204).send(); // No content in response
+    res.status(204).send();
   } catch (error) {
     console.error("Error deleting adventure:", error);
     res.status(500).json({ error: "Internal Server Error" });

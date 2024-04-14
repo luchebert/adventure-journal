@@ -8,10 +8,6 @@ const AdventureDetails = ({ params }: { params: { id: string } }) => {
 
   const { data: adventure, isLoading, isError } = useFetchAdventure(id);
 
-  if (isError) {
-    return <div>Error fetching adventure</div>;
-  }
-
   return (
     <div className="max-w-2xl mx-auto mt-8">
       {isLoading ? (
@@ -20,7 +16,7 @@ const AdventureDetails = ({ params }: { params: { id: string } }) => {
         </div>
       ) : (
         <>
-          {adventure ? ( // Check if adventure exists
+          {adventure ? (
             <div>
               <h1 className="text-3xl font-bold mb-4">{adventure.name}</h1>
               <p className="text-gray-600 mb-4">{adventure.location}</p>
