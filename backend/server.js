@@ -21,13 +21,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 const adventureSchema = new mongoose.Schema({
+  _id: String,
   name: String,
   location: String,
+  description: String,
 });
 
 const Adventure = mongoose.model("adventures", adventureSchema);
 
-app.get("/api/adventures", async (req, res) => {
+app.get('/api/adventures', async (req, res) => {
   try {
     const adventures = await Adventure.find();
     res.json(adventures);
