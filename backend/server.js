@@ -9,8 +9,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+const allowedOrigins = process.env.NODE_ENV === 'development' ? '*' : process.env.FRONTEND_URI;
+
 app.use(cors({
-  origin: '*'
+  origin: allowedOrigins,
 }));
 app.use(express.json());
 
