@@ -1,7 +1,7 @@
 import { useQuery, useMutation, UseMutationResult } from "react-query";
 import { Adventure } from "@/app/types/adventure";
 
-const apiUrl = process.env.API_BASE_URL || "http://localhost:3001";
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
 
 export const useFetchAdventures = () => {
   return useQuery<Adventure[], Error>("adventures", async () => {
