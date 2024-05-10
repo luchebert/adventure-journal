@@ -11,8 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   dbName: "adventure-journal",
 });
 
@@ -88,4 +86,8 @@ app.delete("/api/adventures/:id", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+app.get('/', (req, res) => {
+  res.send('Adventure Journal API is running. Check the API documentation for available endpoints.');
 });
