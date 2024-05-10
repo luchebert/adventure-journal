@@ -9,7 +9,7 @@ interface AdventuresListProps {
 const AdventuresList = ({ adventures }: AdventuresListProps) => {
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {adventures.map((adventure) => (
+      {adventures?.map((adventure) => (
         <li
           key={adventure._id}
           className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300"
