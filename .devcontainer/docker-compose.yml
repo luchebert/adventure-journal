@@ -27,7 +27,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: mayadventure
-      MONGO_INITDB_DATABASE: adventures
+      MONGO_INITDB_DATABASE: adventure-journal
 
     # Add "forwardPorts": ["27017"] to **devcontainer.json** to forward MongoDB locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
