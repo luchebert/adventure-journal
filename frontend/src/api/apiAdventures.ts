@@ -1,11 +1,10 @@
+// apiAdventures.ts
 import { useQuery, useMutation, UseMutationResult } from "react-query";
 import { Adventure } from "@/app/types/adventure";
 
-const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3001";
-
 export const useFetchAdventures = () => {
   return useQuery<Adventure[], Error>("adventures", async () => {
-    const response = await fetch(`${apiUrl}/api/adventures`);
+    const response = await fetch('/api/adventures');
     if (!response.ok) {
       throw new Error("Failed to fetch adventures");
     }
@@ -15,7 +14,7 @@ export const useFetchAdventures = () => {
 
 export const useFetchAdventure = (id: string) => {
   return useQuery<Adventure, Error>(["adventure", id], async () => {
-    const response = await fetch(`${apiUrl}/api/adventures/${id}`);
+    const response = await fetch(`/api/adventures/${id}`);
     if (!response.ok) {
       throw new Error("Failed to fetch adventure");
     }
@@ -30,7 +29,7 @@ export const useCreateAdventure = (): UseMutationResult<
 > => {
   return useMutation<Adventure, Error, Adventure>(
     (adventureData: Adventure) => {
-      return fetch(`${apiUrl}/api/adventures`, {
+      return fetch(`/api/adventures`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +52,7 @@ export const useUpdateAdventure = (): UseMutationResult<
 > => {
   return useMutation<Adventure, Error, { id: string; data: Adventure }>(
     ({ id, data }) => {
-      return fetch(`${apiUrl}/api/adventures/${id}`, {
+      return fetch(`/api/adventures/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +74,7 @@ export const useDeleteAdventure = (): UseMutationResult<
   string
 > => {
   return useMutation<void, Error, string>((id: string) => {
-    return fetch(`${apiUrl}/api/adventures/${id}`, {
+    return fetch(`/api/adventures/${id}`, {
       method: "DELETE",
     }).then((response) => {
       if (!response.ok) {
