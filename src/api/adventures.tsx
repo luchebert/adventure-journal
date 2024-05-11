@@ -1,4 +1,4 @@
-import { Adventure } from "@/app/types/adventure";
+import { Adventure } from "../../app/types/adventure";
 
 const apiUrl = process.env.API_BASE_URL || "http://localhost:3001";
 

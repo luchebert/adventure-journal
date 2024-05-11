@@ -1,6 +1,6 @@
 // apiAdventures.ts
 import { useQuery, useMutation, UseMutationResult } from "react-query";
-import { Adventure } from "@/app/types/adventure";
+import { Adventure } from "../../app/types/adventure";
 
 export const useFetchAdventures = () => {
   return useQuery<Adventure[], Error>("adventures", async () => {
@@ -15,9 +15,11 @@ export const useFetchAdventures = () => {
 export const useFetchAdventure = (id: string) => {
   return useQuery<Adventure, Error>(["adventure", id], async () => {
     const response = await fetch(`/api/adventures/${id}`);
+
     if (!response.ok) {
       throw new Error("Failed to fetch adventure");
     }
+
     return response.json();
   });
 };
@@ -29,7 +31,7 @@ export const useCreateAdventure = (): UseMutationResult<
 > => {
   return useMutation<Adventure, Error, Adventure>(
     (adventureData: Adventure) => {
-      return fetch(`/api/adventures`, {
+      return fetch('/api/adventures', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,6 +64,7 @@ export const useUpdateAdventure = (): UseMutationResult<
         if (!response.ok) {
           throw new Error("Failed to update adventure");
         }
+
         return response.json();
       });
     }

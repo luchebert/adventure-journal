@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useCreateAdventure } from "@/api/apiAdventures";
-import { Adventure } from "@/app/types/adventure";
+import { Adventure } from "../../../app/types/adventure";
 
 const NewAdventurePage = () => {
   const [isUserInitialized, setIsUserInitialized] = useState(false);

@@ -9,11 +9,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     method,
   } = req;
 
+  console.log('req', req);
+
   await connectToDatabase();
 
   switch (method) {
     case 'GET':
       try {
+        console.log('id', id);
         const adventure = await Adventure.findById(id);
         if (!adventure) {
           return res.status(404).json({ error: "Adventure not found" });

@@ -1,13 +1,21 @@
-"use client";
+import { useState, useEffect } from 'react';
 
-import React from "react";
-import { useFetchAdventure } from "@/api/apiAdventures";
+const AdventureDetails = ({ id }) => {
+  const [adventure, setAdventure] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-const AdventureDetails = ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      const res = await fetch(`/api/adventures/${id}`);
+      const data = await res.json();
+      setAdventure(data);
+      setIsLoading(false);
+    };
 
-  const { data: adventure, isLoading, isError } = useFetchAdventure(id);
-
+    fetchData();
+  }, [id]);
+  
   return (
     <div className="max-w-2xl mx-auto mt-8">
       {isLoading ? (
