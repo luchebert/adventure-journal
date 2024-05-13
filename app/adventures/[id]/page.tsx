@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Adventure } from '../../types/adventure';
 
 export default function AdventureDetails() {
