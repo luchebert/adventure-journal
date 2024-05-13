@@ -1,6 +1,6 @@
 "use client";
 
-import AdventuresList from "@/app/adventures/_components/AdventureList";
+import AdventuresList from "./adventures/_components/AdventureList";
 import { useFetchAdventures } from "@/api/apiAdventures";
 import Hero from "@/components/Hero";
 import About from "@/components/About";

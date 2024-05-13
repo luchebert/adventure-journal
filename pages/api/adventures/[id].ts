@@ -9,8 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     method,
   } = req;
 
-  console.log('req', req);
-
   await connectToDatabase();
 
   switch (method) {

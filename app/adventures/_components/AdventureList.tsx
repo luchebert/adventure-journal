@@ -1,5 +1,5 @@
 import React from "react";
-import { Adventure } from "../../../app/types/adventure";
+import { Adventure } from "../../types/adventure";
 import Link from "next/link";
 
 interface AdventuresListProps {
