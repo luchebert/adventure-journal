@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Adventure } from '../../types/adventure';
 
 export default function AdventureDetails() {
@@ -31,7 +31,7 @@ export default function AdventureDetails() {
     };
   
     if (id) {
-      fetchData();
+      fetchData().then(() => {}).catch(error => console.error('Error fetching data:', error));
     }
   }, [id]);
 
@@ -55,4 +55,4 @@ export default function AdventureDetails() {
       )}
     </div>
   );
-};
+}

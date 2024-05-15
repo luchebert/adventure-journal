@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import AdventuresList from "./adventures/_components/AdventureList";
-import { useFetchAdventures } from "@/api/apiAdventures";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
+import AdventuresList from './adventures/_components/AdventureList';
+import { useFetchAdventures } from '@/api/apiAdventures';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
 
 const Home = () => {
-  const { data: adventures, isLoading, isError } = useFetchAdventures();
+  const { data: adventures, isLoading } = useFetchAdventures();
 
   return (
     <>
