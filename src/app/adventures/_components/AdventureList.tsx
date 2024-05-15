@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
-import { Adventure } from '../../../../types/adventure';
+import { IAdventurePlain } from '@/models/Adventure';
+import { assembleSlug } from '@/utils/slug';
 
 interface AdventuresListProps {
-  adventures: Adventure[];
+  adventures: IAdventurePlain[];
 }
 
 const AdventuresList = ({ adventures }: AdventuresListProps) => {
@@ -14,7 +15,7 @@ const AdventuresList = ({ adventures }: AdventuresListProps) => {
           key={adventure._id}
           className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300"
         >
-          <Link href={`/adventures/${adventure._id}`}>
+          <Link href={`/adventures/${assembleSlug(adventure)}`}>
             <h2 className="text-lg font-semibold mb-2">{adventure.name}</h2>
             <p className="text-gray-600">{adventure.location}</p>
           </Link>
