@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Define your Adventure class
-class Adventure {
+class AdventureSeeder {
   @prop({ required: true, type: String })
   public name?: string;
 
@@ -16,8 +16,8 @@ class Adventure {
   public description?: string;
 }
 
-// Get the model for the Adventure class
-const AdventureModel = getModelForClass(Adventure);
+// Get the model for the AdventureSeeder class
+const AdventureModel = getModelForClass(AdventureSeeder);
 
 // Function to connect to MongoDB
 async function connectToDatabase() {
