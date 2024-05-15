@@ -8,7 +8,6 @@ export const assembleSlug = (data: IAdventurePlain): string => {
 
 export const disassembleSlug = (slug: string): { _id: string; name: string; location: string } | null => {
   const parts = slug.split('-');
-  console.log('parts', parts);
 
   // Check if the slug has at least three parts
   if (parts.length < 3) return null;

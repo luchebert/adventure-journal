@@ -1,7 +1,7 @@
 // src/lib/adventureDatabaseService.ts
 import connectToDatabase from '../utils/db';
 import Adventure, { IAdventurePlain } from '../models/Adventure';
-import { ObjectId } from 'mongodb'; // Ensure this import is present
+import { ObjectId } from 'mongodb';
 
 const AdventureModel = Adventure;
 
@@ -29,18 +29,14 @@ export async function fetchAdventureById(_id: string): Promise<IAdventurePlain |
     await connectToDatabase();
 
     const objectId = new ObjectId(_id);
-    console.log(`Searching for adventure with ID: ${objectId}`);
 
     const adventureDocument = await AdventureModel.findById(objectId).exec();
-    console.log(`Retrieved adventure document: ${JSON.stringify(adventureDocument)}`);
 
     if (!adventureDocument) {
-      console.log('adventureDocument', null);
       return null;
     }
 
     const adventure = adventureDocument.toObject();
-    console.log(`Converted adventure: ${JSON.stringify(adventure)}`);
 
     return {
       _id: adventure._id.toString(),
