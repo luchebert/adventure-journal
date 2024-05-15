@@ -1,17 +1,7 @@
-import mongoose, { Mongoose } from 'mongoose';
+import { Global } from 'node';
+import mongoose from 'mongoose';
 
-declare global {
-  namespace NodeJS {
-    interface Global {
-      mongoose: {
-        conn: null | Mongoose;
-        promise: null | Promise<Mongoose>;
-      };
-    }
-  }
-}
-
-let cached = (global as any).mongoose || { conn: null, promise: null };
+const cached = (global as Global).mongoose || { conn: null, promise: null };
 
 async function connectToDatabase() {
   if (cached.conn) {
