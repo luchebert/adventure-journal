@@ -23,22 +23,27 @@ export const fetchAdventures = async (): Promise<IAdventurePlain[]> => {
   }
 };
 
+// In adventureDatabaseService.ts or similar
 export async function fetchAdventureById(_id: string): Promise<IAdventurePlain | null> {
   try {
     await connectToDatabase();
 
-    // Convert the string _id to an ObjectId
     const objectId = new ObjectId(_id);
+    console.log(`Searching for adventure with ID: ${objectId}`);
 
-    // Use the converted ObjectId in the query
-    const adventure = await AdventureModel.findOne({ _id: objectId }).exec();
+    const adventureDocument = await AdventureModel.findById(objectId).exec();
+    console.log(`Retrieved adventure document: ${JSON.stringify(adventureDocument)}`);
 
-    if (!adventure) {
+    if (!adventureDocument) {
+      console.log('adventureDocument', null);
       return null;
     }
 
+    const adventure = adventureDocument.toObject();
+    console.log(`Converted adventure: ${JSON.stringify(adventure)}`);
+
     return {
-      _id: adventure._id.toString(), // Convert back to string if necessary
+      _id: adventure._id.toString(),
       name: adventure.name,
       location: adventure.location,
       description: adventure.description,

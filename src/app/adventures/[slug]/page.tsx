@@ -1,7 +1,8 @@
 // src/app/pages/adventures/[slug]/page.tsx
 'use server';
 
-import fetchAdventureById, { IAdventurePlain } from '@/models/Adventure';
+import { fetchAdventureById } from '@/lib/adventureDatabaseService';
+import { IAdventurePlain } from '@/models/Adventure';
 import { disassembleSlug } from '@/utils/slug';
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -18,9 +19,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   console.log('_id', _id);
 
-  const adventure: IAdventurePlain | null = await fetchAdventureById.findOne({
-    _id: _id,
-  });
+  const adventure: IAdventurePlain | null = await fetchAdventureById(_id);
 
   console.log('adventure', adventure);
 
