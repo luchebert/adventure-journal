@@ -4,11 +4,11 @@ import React from 'react';
 import AdventuresList from './adventures/_components/AdventureList';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import { IAdventure } from '@/models/Adventure';
+import { IAdventurePlain } from '@/models/Adventure';
 import { fetchAdventures } from '../lib/adventureDatabaseService';
 
 const Home = async () => {
-  const adventures: IAdventure[] = await fetchAdventures();
+  const adventures: IAdventurePlain[] = await fetchAdventures();
 
   return (
     <>
