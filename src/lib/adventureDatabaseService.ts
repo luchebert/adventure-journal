@@ -1,7 +1,7 @@
 // src/lib/adventureDatabaseService.ts
 import connectToDatabase from '../utils/db';
-import { IAdventurePlain } from '../models/Adventure';
-import Adventure from '../models/Adventure';
+import Adventure, { IAdventurePlain } from '../models/Adventure';
+import { ObjectId } from 'mongodb'; // Ensure this import is present
 
 const AdventureModel = Adventure;
 
@@ -22,3 +22,29 @@ export const fetchAdventures = async (): Promise<IAdventurePlain[]> => {
     throw error;
   }
 };
+
+export async function fetchAdventureById(_id: string): Promise<IAdventurePlain | null> {
+  try {
+    await connectToDatabase();
+
+    // Convert the string _id to an ObjectId
+    const objectId = new ObjectId(_id);
+
+    // Use the converted ObjectId in the query
+    const adventure = await AdventureModel.findOne({ _id: objectId }).exec();
+
+    if (!adventure) {
+      return null;
+    }
+
+    return {
+      _id: adventure._id.toString(), // Convert back to string if necessary
+      name: adventure.name,
+      location: adventure.location,
+      description: adventure.description,
+    } as IAdventurePlain;
+  } catch (error) {
+    console.error('Error fetching adventure by id:', error);
+    throw error;
+  }
+}
