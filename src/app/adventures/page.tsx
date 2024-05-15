@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import AdventuresList from "./_components/AdventureList";
-import { useFetchAdventures } from "@/api/apiAdventures";
+import React from 'react';
+import AdventuresList from './_components/AdventureList';
+import { useFetchAdventures } from '@/api/apiAdventures';
 
 const AdventuresPage = () => {
-  const { data: adventures, isLoading, isError } = useFetchAdventures();
+  const { data: adventures, isLoading } = useFetchAdventures();
 
   return (
     <div className="container mx-auto px-4 py-8">
