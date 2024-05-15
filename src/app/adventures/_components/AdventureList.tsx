@@ -1,6 +1,6 @@
-import React from "react";
-import { Adventure } from "../../types/adventure";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
+import { Adventure } from '../../../../types/adventure';
 
 interface AdventuresListProps {
   adventures: Adventure[];
