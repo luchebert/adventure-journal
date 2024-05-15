@@ -1,19 +1,19 @@
-import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
-import { cn } from "@/lib/utils";
-import QueryProvider from "@/providers/QueryProvider";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import type { Metadata } from 'next';
+import { Inter as FontSans } from 'next/font/google';
+import './globals.css';
+import { cn } from '@/lib/utils';
+import QueryProvider from '@/providers/QueryProvider';
+import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+  subsets: ['latin'],
+  variable: '--font-sans',
 });
 
 export const metadata: Metadata = {
-  title: "My Adventure Journal",
-  description: "My Adventure Journal",
+  title: 'My Adventure Journal',
+  description: 'My Adventure Journal',
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable
         )}
       >
