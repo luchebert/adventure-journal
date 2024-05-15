@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
 const Hero = () => {
   return (
     <section
       className="relative"
       style={{
-        backgroundImage: `url('/home_splash.jpg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: "400px",
+        backgroundImage: 'url("/home_splash.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '400px',
       }}
     >
       <div className="absolute inset-0 flex justify-center items-center">
