@@ -14,9 +14,9 @@ export interface IAdventureDocument extends IAdventurePlain, Document {
 }
 
 const AdventureSchema: Schema = new Schema<IAdventureDocument>({
-  name: String,
-  location: String,
-  description: String,
+  name: { type: String, required: true },
+  location: { type: String, required: true },
+  description: { type: String, required: true },
 });
 
 export default mongoose.models.Adventure || mongoose.model<IAdventureDocument>('Adventure', AdventureSchema, 'adventures');
