@@ -1,15 +1,50 @@
 // src/app/signup/page.tsx
-import React from 'react';
+'use client';
+
+import React, { useState, FormEvent } from 'react';
 import { signupUser } from '@/actions/ActionsUser';
 
 export default function Page() {
+  // Initialize state for errors and success
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isSuccessful, setIsSuccessful] = useState<boolean>(false);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    try {
+      const result = await signupUser(formData);
+      if (result.success) {
+        setIsSuccessful(true);
+      } else {
+        setErrorMessage(result.message);
+      }
+    } catch (error: unknown) {
+      // Assert the type of error to access its message property
+      const errorMessage =
+        typeof error === 'object' ? (error as Error).message : '';
+      setErrorMessage(errorMessage);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <form
-        action={signupUser}
+        onSubmit={handleSubmit}
         className="w-full max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <div className="mb-4">
+        {errorMessage && (
+          <p className="text-red-600 mt-2 text-sm p-2 bg-red-100 rounded">
+            {errorMessage}
+          </p>
+        )}
+        {isSuccessful && (
+          <p className="text-green-600 mt-2 text-sm p-2 bg-green-100 rounded">
+            Registration successful!
+          </p>
+        )}
+
+        <div className="mb-4 mt-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"

@@ -23,4 +23,3 @@ export const SignupSchema = z.object({
     .min(8, 'Confirm Password must be at least 8 characters')
     .max(50, 'Confirm Password cannot exceed 50 characters')
 });
-
