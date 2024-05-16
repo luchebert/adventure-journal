@@ -1,7 +1,6 @@
-import { Global } from 'node';
 import mongoose from 'mongoose';
 
-const cached = (global as Global).mongoose || { conn: null, promise: null };
+const cached = (global as ExtendedGlobal).mongoose || { conn: null, promise: null };
 
 async function connectToDatabase() {
   if (cached.conn) {
@@ -16,7 +15,7 @@ async function connectToDatabase() {
     const uri = process.env.MONGODB_URI;
 
     if (!uri) {
-      throw new Error('MONGODB_URI is not defined in.env file');
+      throw new Error('MONGODB_URI is not defined in .env file');
     }
     cached.promise = mongoose.connect(uri, options).then((mongoose) => {
       return mongoose;
