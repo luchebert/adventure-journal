@@ -2,7 +2,6 @@
 import connectToDatabase from '../utils/db';
 import User, { IUser } from '../models/User';
 import { ObjectId } from 'mongodb';
-import { v4 as uuidv4 } from 'uuid';
 
 const UserModel = User;
 
@@ -10,15 +9,12 @@ export const createUser = async (newUser: Omit<IUser, '_id'>): Promise<IUser> =>
   try {
     await connectToDatabase();
 
-    const newUserDoc = new User({
-      ...newUser,
-      _id: uuidv4(), // Generate a unique ID for the new user
-    });
+    const newUserDoc = new User(newUser); // Let MongoDB handle _id creation
 
     const savedUser = await newUserDoc.save();
 
     return {
-      _id: savedUser._id.toString(),
+      _id: savedUser._id.toString(), // MongoDB _id field is an ObjectId, so we need to convert it to string
       username: savedUser.username,
       email: savedUser.email,
       password: savedUser.password,
