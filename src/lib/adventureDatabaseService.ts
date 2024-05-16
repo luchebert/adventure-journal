@@ -2,8 +2,35 @@
 import connectToDatabase from '../utils/db';
 import Adventure, { IAdventurePlain } from '../models/Adventure';
 import { ObjectId } from 'mongodb';
+import { v4 as uuidv4 } from 'uuid';
 
 const AdventureModel = Adventure;
+
+export const createAdventure = async (newAdventure: Omit<IAdventurePlain, '_id'>): Promise<IAdventurePlain> => {
+  try {
+    await connectToDatabase();
+
+    // Basic validation can be performed here if needed
+    // For example, checking if the description length meets a minimum requirement
+
+    const newAdventureDoc = new Adventure({
+      ...newAdventure,
+      _id: uuidv4(), // Generate a unique ID for the new adventure
+    });
+
+    const savedAdventure = await newAdventureDoc.save();
+
+    return {
+      _id: savedAdventure._id.toString(),
+      name: savedAdventure.name,
+      location: savedAdventure.location,
+      description: savedAdventure.description,
+    } as IAdventurePlain;
+  } catch (error) {
+    console.error('Error creating adventure:', error);
+    throw error;
+  }
+};
 
 export const fetchAdventures = async (): Promise<IAdventurePlain[]> => {
   try {
