@@ -12,8 +12,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: 'My Adventure Journal',
-  description: 'My Adventure Journal',
+  title: 'Adventure Journal',
+  description: 'Adventure Journal',
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={cn(
           'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <QueryProvider>

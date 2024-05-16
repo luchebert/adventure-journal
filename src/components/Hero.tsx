@@ -13,7 +13,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0 flex justify-center items-center">
         <h1 className="text-5xl font-bold text-white text-shadow-lg">
-          My Adventure Journal
+          Adventure Journal
         </h1>
       </div>
     </section>
